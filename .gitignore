@@ -1,0 +1,10 @@
+*.cmake
+CMakeFiles/
+MakeFile
+CMakeCache.txt
+Testing/
+
+game_of_life
+gol_test
+
+.vscode/
