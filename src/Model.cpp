@@ -16,6 +16,9 @@ void Model::initModel() {
     for (int row = 1; row <= n; row++) {
         vector<bool> rowCellStatus;
         rowCellStatus.push_back(0);
+
+        vector<int> rowLiveCellNumber;
+        rowLiveCellNumber.push_back(0);
         for (int col = 1; col <= m; col++) {
 
             /*
@@ -25,10 +28,13 @@ void Model::initModel() {
             */
             bool cellStatus = rand()&1;
             rowCellStatus.push_back(cellStatus);
+            rowLiveCellNumber.push_back(0);
            // Matrix[row][col] = cellStatus;
         }
         Matrix.push_back(rowCellStatus);
-    }
+        liveNeighbor.push_back(rowLiveCellNumber);
+    } 
+
 
 }
 
@@ -38,6 +44,9 @@ void Model::initModel() {
 Model::Model(int tn, int tm) {
     vector<bool> notUse;    //
     Matrix.push_back(notUse);
+
+    vector<int> NotUse;
+    liveNeighbor.push_back(NotUse);
     n = tn, m = tm;
 }
 
@@ -117,10 +126,17 @@ void Model::writeModel(string s) {
     for (int row = 1; row <= n; row++) {
         vector<bool> rowCellStatus;
         rowCellStatus.push_back(0);
+
+        vector<int> rowLiveCellNumber;
+        rowLiveCellNumber.push_back(0);
+
         for (int col = 1; col <= m; col++) {
             rowCellStatus.push_back(s[(row-1)*n+col-1]-'0');
+             rowLiveCellNumber.push_back(0);
         }
+
         Matrix.push_back(rowCellStatus);
+        liveNeighbor.push_back(rowLiveCellNumber);
     }
 
 }

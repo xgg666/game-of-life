@@ -22,7 +22,8 @@ private:
     vector<vector<bool> >Matrix;
     //矩阵大小为n*m
     int n, m;
-    int liveNeighbor[size_x][size_y];
+    //int liveNeighbor[size_x][size_y];
+    vector<vector<int> > liveNeighbor;
     bool getCellNextStatus(int currentStatus, int currentLiveNeighbrNumber);
 public:
     Model();
@@ -33,7 +34,7 @@ public:
     void printModel();
     //获取一个细胞的八个方向一共有多少个活细胞
     void getNeighborLiveNumber();
-    
+
     bool locationSafeOrDead(int x, int y);
 
     int getMyNeighbor(int x, int y);

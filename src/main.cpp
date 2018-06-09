@@ -37,5 +37,5 @@ int main(int argc, char* args[]) {
 
     //test_someCellAfterOne("111111111", 3, 3);
    // test_someCellAfterOne("101010010", 3, 3);
-		ShowModelMatrix(50, 50);
+		ShowModelMatrix(10000, 10000);
 }
