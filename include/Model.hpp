@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <unistd.h>
 
 #define size_x 1000
 #define size_y 1000

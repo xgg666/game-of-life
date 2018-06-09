@@ -126,6 +126,7 @@ bool Model::getNextStatus(int currentStatus, int currentLiveNeighbrNumber) {
 
 string Model::changeCellsStatus() {
     string outNextStatus;
+    getNeighborNumber();
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
             
