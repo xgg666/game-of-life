@@ -9,16 +9,18 @@
 bool test_someCellAfterOne(string s, int n, int m, string outAnswer) {
 	Model *test_Model = new Model(n, m);
 	test_Model -> writeModel(s);
-	//test_Model -> priModel();
-	test_Model -> getNeighborNumber();
-	return outAnswer == test_Model -> getAllCellsNeighbor();
+	//test_Model -> printModel();
+	test_Model -> getNeighborLiveNumber();
+	//cout<< test_Model->getAllCellsNeighbor()<<endl;
+	return outAnswer == test_Model -> getAllCellsNeighborNumber();
 }
 
 bool test_changeCellsStatus(string s, int n, int m, string outAnswer) {
 	Model *test_Model = new Model(n, m);
 	test_Model -> writeModel(s);
-	//test_Model -> priModel();
-	test_Model -> getNeighborNumber();
+	//test_Model -> printModel();
+	test_Model -> getNeighborLiveNumber();
+	//cout << test_Model->changeCellsStatus()<<endl;
 	return outAnswer == test_Model -> changeCellsStatus();
 }
 

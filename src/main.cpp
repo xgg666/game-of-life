@@ -6,14 +6,14 @@
 void test_initModel(int n, int m) {
     Model *test_Model = new Model(n, m);
     test_Model -> initModel();
-    test_Model -> priModel();
+    test_Model -> printModel();
 }
 
 void test_someCellAfterOne(string s, int n, int m) {
 	Model *test_Model = new Model(n, m);
 	test_Model -> writeModel(s);
-	//test_Model -> priModel();
-	test_Model -> getNeighborNumber();
+	//test_Model -> printModel();
+	test_Model -> getNeighborLiveNumber();
 	//test_Model -> getAllCellsNeighbor();
 }
 
@@ -23,7 +23,7 @@ void ShowModelMatrix(int n, int m) {
 	//showModel -> writeModel(s);
 	showModel -> initModel();
 	for (int tim = 1; tim <= 100; tim++) {
-		showModel -> priModel();
+		showModel -> printModel();
 		showModel -> changeCellsStatus();
 		cout << endl;
 		sleep(1);
@@ -31,7 +31,7 @@ void ShowModelMatrix(int n, int m) {
 	}
 }
 
-int main() {
+int main(int argc, char* args[]) {
    
    // test_initModel(50, 50);
 

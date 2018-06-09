@@ -13,18 +13,21 @@ void Model::initModel() {
     srand(time(0));
 
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
+    for (int row = 1; row <= n; row++) {
+        vector<bool> rowCellStatus;
+        rowCellStatus.push_back(0);
+        for (int col = 1; col <= m; col++) {
 
             /*
             用于决定细胞的生死，
             1--代表细胞为活细胞
             0--代表细胞为死细胞
             */
-            int flag = rand()&1;
-
-            Matrix[i][j] = flag;
+            bool cellStatus = rand()&1;
+            rowCellStatus.push_back(cellStatus);
+           // Matrix[row][col] = cellStatus;
         }
+        Matrix.push_back(rowCellStatus);
     }
 
 }
@@ -33,6 +36,8 @@ void Model::initModel() {
   初始化矩阵的大小n*m
 */
 Model::Model(int tn, int tm) {
+    vector<bool> notUse;    //
+    Matrix.push_back(notUse);
     n = tn, m = tm;
 }
 
@@ -40,12 +45,12 @@ Model::Model(int tn, int tm) {
   输出矩阵内的细胞的存活状态
 */
 
-void Model::priModel() {
+void Model::printModel() {
     using namespace std;
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            if (Matrix[i][j] == 1) {
+    for (int row = 1; row <= n; row++) {
+        for (int col = 1; col <= m; col++) {
+            if (Matrix[row][col] == 1) {
                 cout << AliveCell;
             }
             else cout << DeadCell;
@@ -54,9 +59,9 @@ void Model::priModel() {
     }
 }
 
-bool Model::locationSafe(int x, int y) {
+bool Model::locationSafeOrDead(int row, int col) {
 
-    if (x>0&&x<=n&&y>0&&y<=m)  return true;
+    if (row>0 && row<=n && col>0 && col<=m)  return true;
 
     return false;
 
@@ -65,58 +70,62 @@ bool Model::locationSafe(int x, int y) {
 /*
   获取一个细胞的八个方向一共有多少个活细胞
 */
-void Model::getNeighborNumber() {
+void Model::getNeighborLiveNumber() {
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
+    for (int row = 1; row <= n; row++) {
+        for (int col = 1; col <= m; col++) {
             int liveCell=0;
             for (int k = 0; k < 8; k++) {
 
 
-                int nextX = i+dir[k][0];
-                int nextY = j+dir[k][1];
+                int nextX = row+dir[k][0];
+                int nextY = col+dir[k][1];
 
-                if (locationSafe(nextX, nextY) && Matrix[nextX][nextY]==true) {
+                if (locationSafeOrDead(nextX, nextY) && Matrix[nextX][nextY]==true) {
                     liveCell++;
                 }
             }
-            liveNeighbor[i][j] = liveCell;
+            liveNeighbor[row][col] = liveCell;
 
         }
     }
 
 }
 
-int Model::getMyNeighbor(int x, int y) {
+int Model::getMyNeighbor(int row, int col) {
 
-    return liveNeighbor[x][y];
+    return liveNeighbor[row][col];
 
 }
 
-string Model::getAllCellsNeighbor() {
+string Model::getAllCellsNeighborNumber() {
     string outNeighbor;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
+    for (int row = 1; row <= n; row++) {
+        for (int col = 1; col <= m; col++) {
            // cout<<liveNeighbor[i][j]<<" ";
-            outNeighbor += liveNeighbor[i][j] + '0';
+            outNeighbor += liveNeighbor[row][col] + '0';
         }
 //        cout << endl;
     }
     return outNeighbor;
 }
 
+
+
 void Model::writeModel(string s) {
 
-    for (int i = 1; i <= n; i++) {
-        for (int j=1; j<= m; j++) {
-            Matrix[i][j] = s[(i-1)*n+j-1]-'0';
+    for (int row = 1; row <= n; row++) {
+        vector<bool> rowCellStatus;
+        rowCellStatus.push_back(0);
+        for (int col = 1; col <= m; col++) {
+            rowCellStatus.push_back(s[(row-1)*n+col-1]-'0');
         }
+        Matrix.push_back(rowCellStatus);
     }
 
 }
 
-
-bool Model::getNextStatus(int currentStatus, int currentLiveNeighbrNumber) {
+bool Model::getCellNextStatus(int currentStatus, int currentLiveNeighbrNumber) {
     if (currentLiveNeighbrNumber < 2)  return false;
     if (currentLiveNeighbrNumber > 3)  return false;
     if (currentLiveNeighbrNumber == 3)  return true;
@@ -126,12 +135,12 @@ bool Model::getNextStatus(int currentStatus, int currentLiveNeighbrNumber) {
 
 string Model::changeCellsStatus() {
     string outNextStatus;
-    getNeighborNumber();
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
+    getNeighborLiveNumber();
+    for (int row = 1; row <= n; row++) {
+        for (int col = 1; col <= m; col++) {
             
-            Matrix[i][j] = getNextStatus(Matrix[i][j], liveNeighbor[i][j]);
-            outNextStatus += (int)Matrix[i][j] + '0';
+            Matrix[row][col] = getCellNextStatus(Matrix[row][col], liveNeighbor[row][col]);
+            outNextStatus += (int)Matrix[row][col] + '0';
         }
     }
     return outNextStatus;
