@@ -36,6 +36,7 @@ TEST_CASE("should return answer when call method getAllCellsNeighbor3()", "[Test
     REQUIRE(test_someCellAfterOne("101111101", 3, 3, "252363252"));
 }
 
+
 TEST_CASE("should return next status when call method changeCellsStatus1()", "[TestchangeCellsStatus1]") {
 	REQUIRE(test_changeCellsStatus("101111101", 3, 3, "101101101"));
 }
@@ -46,4 +47,16 @@ TEST_CASE("should return next status when call method changeCellsStatus2()", "[T
 
 TEST_CASE("should return next status when call method changeCellsStatus3()", "[TestchangeCellsStatus3]") {
 	REQUIRE(test_changeCellsStatus("111111111", 3, 3, "101000101"));
+}
+
+TEST_CASE("should return next status when call method changeCellsStatus4()", "[TestchangeCellsStatus4]") {
+	REQUIRE(test_changeCellsStatus("1111", 2, 2, "1111"));
+}
+
+TEST_CASE("should return next status when call method changeCellsStatus5()", "[TestchangeCellsStatus5]") {
+	REQUIRE(test_changeCellsStatus("111", 1, 3, "010"));
+}
+
+TEST_CASE("should return next status when call method changeCellsStatus6()", "[TestchangeCellsStatus6]") {
+	REQUIRE(test_changeCellsStatus("111", 3, 1, "010"));
 }
