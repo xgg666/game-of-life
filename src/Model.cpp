@@ -7,6 +7,11 @@
 Model::Model() {
 
 }
+
+vector<vector<bool> > Model::getModel() {
+    return Matrix;
+}
+
 void Model::initModel() {
 
     //设置随机种子，用于随机生成活细胞

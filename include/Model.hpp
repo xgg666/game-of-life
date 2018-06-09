@@ -12,8 +12,7 @@
 #define DeadCell ' '
 using namespace std;
 
-const int dir[8][2] = {{1, 0}, {1, 1}, {0, 1}, {-1, 1}, 
-                {-1, 0}, {-1, -1}, {0, -1}, {1, -1}};
+const int dir[8][2] = {{1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}, {0, -1}, {1, -1}};
 
 class Model {
 private:
@@ -34,7 +33,7 @@ public:
     void printModel();
     //获取一个细胞的八个方向一共有多少个活细胞
     void getNeighborLiveNumber();
-
+    vector<vector<bool> > getModel();
     bool locationSafeOrDead(int x, int y);
 
     int getMyNeighbor(int x, int y);
