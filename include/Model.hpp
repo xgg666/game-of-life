@@ -10,6 +10,9 @@
 #define DeadCell ' '
 using namespace std;
 
+const int dir[8][2] = {{1, 0}, {1, 1}, {0, 1}, {-1, 1}, 
+                {-1, 0}, {-1, -1}, {0, -1}, {1, -1}};
+
 class Model {
 private:
     //矩阵
@@ -17,8 +20,7 @@ private:
     //矩阵大小为n*m
     int n, m;
     int liveNeighbor[size_x][size_y];
-    int dir[8][2] = {{1, 0}, {1, 1}, {0, 1}, {-1, 1}, 
-                    {-1, 0}, {-1, -1}, {0, -1}, {1, -1}};
+    bool getNextStatus(int currentStatus, int currentLiveNeighbrNumber);
 public:
     Model();
     Model(int tn, int tm);
@@ -36,6 +38,8 @@ public:
     void writeModel(string s);
 
     string getAllCellsNeighbor();
+
+    string changeCellsStatus();
 
     ~Model();
 };

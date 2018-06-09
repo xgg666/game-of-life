@@ -21,6 +21,6 @@ int main() {
    
    // test_initModel(50, 50);
 
-    test_someCellAfterOne("111111111", 3, 3);
-    test_someCellAfterOne("101010010", 3, 3);
+    //test_someCellAfterOne("111111111", 3, 3);
+   // test_someCellAfterOne("101010010", 3, 3);
 }

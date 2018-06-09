@@ -115,3 +115,24 @@ void Model::writeModel(string s) {
 
 }
 
+
+bool Model::getNextStatus(int currentStatus, int currentLiveNeighbrNumber) {
+    if (currentLiveNeighbrNumber < 2)  return false;
+    if (currentLiveNeighbrNumber > 3)  return false;
+    if (currentLiveNeighbrNumber == 3)  return true;
+    if (currentLiveNeighbrNumber == 2)  return currentStatus;
+}
+
+
+string Model::changeCellsStatus() {
+    string outNextStatus;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            
+            Matrix[i][j] = getNextStatus(Matrix[i][j], liveNeighbor[i][j]);
+            outNextStatus += (int)Matrix[i][j] + '0';
+        }
+    }
+    return outNextStatus;
+
+}
