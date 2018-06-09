@@ -11,6 +11,7 @@ set(SRC_FILE
 
 set(TEST_FILE
 "test/HelloTest.cpp"
+"test/TestgetNeighbor.cpp"
 )
 
 add_executable(game_of_life ${SRC_FILE} "src/main.cpp")

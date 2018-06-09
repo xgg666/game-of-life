@@ -258,6 +258,33 @@ test/TestRunner.cpp.s:
 	$(MAKE) -f CMakeFiles/gol_test.dir/build.make CMakeFiles/gol_test.dir/test/TestRunner.cpp.s
 .PHONY : test/TestRunner.cpp.s
 
+test/TestgetNeighbor.o: test/TestgetNeighbor.cpp.o
+
+.PHONY : test/TestgetNeighbor.o
+
+# target to build an object file
+test/TestgetNeighbor.cpp.o:
+	$(MAKE) -f CMakeFiles/gol_test.dir/build.make CMakeFiles/gol_test.dir/test/TestgetNeighbor.cpp.o
+.PHONY : test/TestgetNeighbor.cpp.o
+
+test/TestgetNeighbor.i: test/TestgetNeighbor.cpp.i
+
+.PHONY : test/TestgetNeighbor.i
+
+# target to preprocess a source file
+test/TestgetNeighbor.cpp.i:
+	$(MAKE) -f CMakeFiles/gol_test.dir/build.make CMakeFiles/gol_test.dir/test/TestgetNeighbor.cpp.i
+.PHONY : test/TestgetNeighbor.cpp.i
+
+test/TestgetNeighbor.s: test/TestgetNeighbor.cpp.s
+
+.PHONY : test/TestgetNeighbor.s
+
+# target to generate assembly for a file
+test/TestgetNeighbor.cpp.s:
+	$(MAKE) -f CMakeFiles/gol_test.dir/build.make CMakeFiles/gol_test.dir/test/TestgetNeighbor.cpp.s
+.PHONY : test/TestgetNeighbor.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -281,6 +308,9 @@ help:
 	@echo "... test/TestRunner.o"
 	@echo "... test/TestRunner.i"
 	@echo "... test/TestRunner.s"
+	@echo "... test/TestgetNeighbor.o"
+	@echo "... test/TestgetNeighbor.i"
+	@echo "... test/TestgetNeighbor.s"
 .PHONY : help
 
 

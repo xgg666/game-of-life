@@ -9,8 +9,18 @@ void test_initModel(int n, int m) {
     test_Model -> priModel();
 }
 
+void test_someCellAfterOne(string s, int n, int m) {
+	Model *test_Model = new Model(n, m);
+	test_Model -> writeModel(s);
+	//test_Model -> priModel();
+	test_Model -> getNeighborNumber();
+	//test_Model -> getAllCellsNeighbor();
+}
+
 int main() {
-    //测试地图初始化
-    //初始定义一个50×50的矩阵
-    test_initModel(50, 50);
+   
+   // test_initModel(50, 50);
+
+    test_someCellAfterOne("111111111", 3, 3);
+    test_someCellAfterOne("101010010", 3, 3);
 }
